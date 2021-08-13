@@ -15,10 +15,11 @@ app.use(bodyParser.urlencoded({limit: '30mb', extended: true}));
 app.use(cors());
 app.options('*', cors());
 try {
+    console.log(process.env.accessKeyId);
     dynamoose.aws.sdk.config.update({
-        "accessKeyId": "***************",
-        "secretAccessKey": "*******************",
-        "sessionToken": "*****************************",
+        "accessKeyId": process.env.accessKeyId,
+        "secretAccessKey": process.env.secretAccessKey,
+        "sessionToken": process.env.sessionToken,
         "region": "us-east-1"
     });
     console.log("Connected successfully");
